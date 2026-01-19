@@ -1,36 +1,102 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📚 BookHaven
 
-## Getting Started
+Una aplicacion web para gestionar y explorar un catalogo de libros.
 
-First, run the development server:
+## 🚀 Tecnologias
 
+- **Next.js 16** - Framework React
+- **TypeScript** - Tipado estatico
+- **Tailwind CSS** - Estilos
+- **MySQL 2** - Base de datos
+- **Node.js** - Runtime
+
+## 📋 Requisitos previos
+
+- **Node.js** 18+ ([Descargar](https://nodejs.org/))
+- **npm** o **yarn**
+- **MySQL Server** 8.0+
+
+## 🔧 Instalacion en otra maquina
+
+### 1. Clonar el repositorio
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/TU_USUARIO/BookHaven.git
+cd BookHaven/bookhaven
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Instalar dependencias
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Configurar variables de entorno
+Copia el archivo `.env.example` a `.env` y configura tus valores locales:
+```bash
+cp .env.example .env
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Edita `.env` con tu configuracion MySQL:
+```env
+DB_HOST=localhost
+DB_USER=tu_usuario
+DB_PASSWORD=tu_contraseña
+DB_NAME=bookhaven
+```
 
-## Learn More
+### 4. Crear la base de datos
+Asegurate de que MySQL este corriendo y crea la base de datos:
+```bash
+mysql -u root -p
+CREATE DATABASE bookhaven;
+USE bookhaven;
+-- Importa tu schema aqui (si tienes archivo SQL)
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 5. Ejecutar en desarrollo
+```bash
+npm run dev
+```
+La aplicacion estara disponible en [http://localhost:3000](http://localhost:3000)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📦 Scripts disponibles
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `npm run dev` - Ejecutar en modo desarrollo
+- `npm run build` - Construir para produccion
+- `npm run start` - Ejecutar version produccion
+- `npm run lint` - Ejecutar linter
 
-## Deploy on Vercel
+## 📁 Estructura del proyecto
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+src/
+├── app/
+│   ├── api/           # Rutas API
+│   ├── catalogo/      # Pagina de catalogo
+│   └── layout.tsx     # Layout principal
+├── components/        # Componentes reutilizables
+├── lib/               # Utilidades y conexion BD
+└── globals.css        # Estilos globales
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🐛 Solucion de problemas
+
+### Error de conexion MySQL
+- Verifica que MySQL este corriendo
+- Revisa las credenciales en `.env`
+- Comprueba el nombre de la base de datos
+
+### Error de modulos no encontrados
+```bash
+npm install
+```
+
+### Puerto 3000 en uso
+```bash
+npm run dev -- -p 3001
+```
+
+## 📝 Notas
+
+- El archivo `.env` no esta versionado (`.gitignore`)
+- Cada desarrollador necesita su propia configuracion local de `.env`
+- Para contribuir, crea un branch y abre un Pull Request
